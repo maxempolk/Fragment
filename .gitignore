@@ -8,3 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+
+# zed
+.zed
+
+db_start
+
+test.py
