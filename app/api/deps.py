@@ -15,7 +15,6 @@ oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl=f"{settings.API_V1_STR}/auth/login"
 )
 
-
 def get_current_user(
     db: Session = Depends(get_db),
     token: str = Depends(oauth2_scheme)
