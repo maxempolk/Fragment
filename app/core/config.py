@@ -1,4 +1,4 @@
-from pydantic import MySQLDsn, field_validator, ValidationInfo
+from pydantic import MySQLDsn, field_validator, ValidationInfo, ConfigDict
 from pydantic_settings import BaseSettings
 from typing import Optional
 import secrets
@@ -44,7 +44,6 @@ class Settings(BaseSettings):
             path=path,
         ))
 
-
     # Настройки JWT
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30  # 30 минут
     ALGORITHM: str = "HS256"
@@ -52,9 +51,7 @@ class Settings(BaseSettings):
     # Настройки CORS
     BACKEND_CORS_ORIGINS: list[str] = ["http://localhost:8080", "http://localhost:3000"]
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = ConfigDict(env_file = ".env", case_sensitive = True) # pyright: ignore
 
 
 settings = Settings(
